@@ -30,7 +30,7 @@ var app = (function() {
   }
 
   function fetchJSON() {
-    fetch('examples/animals.json')
+    fetch('examples/non-existent.json')
       .then(logResult)
       .catch(logError);
   }
