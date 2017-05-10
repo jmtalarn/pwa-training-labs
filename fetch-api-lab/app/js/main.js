@@ -38,9 +38,9 @@ var app = (function() {
   }
 
   function validateResponse(response) {
-    if(response.ok){
+    if (response.ok) {
       return response;
-    }else{
+    } else {
       throw response.statusText;
     }
   }
@@ -50,15 +50,23 @@ var app = (function() {
   }
 
   function showImage(responseAsBlob) {
-    //  TODO 3a
+    var container = document.getElementById('container');
+    var imgElem = document.createElement('img');
+    container.appendChild(imgElem);
+    var imgUrl = URL.createObjectURL(responseAsBlob);
+    imgElem.src = imgUrl;
   }
 
   function readResponseAsBlob(response) {
-    // TODO 3b
+    return response.blob();
   }
 
   function fetchImage() {
-    // TODO 3c
+    fetch('examples/kitten.jpg')
+      .then(validateResponse)
+      .then(readResponseAsBlob)
+      .then(showImage)
+      .catch(logError);
   }
 
   function showText(responseAsText) {
