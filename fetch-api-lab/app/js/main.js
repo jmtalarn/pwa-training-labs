@@ -87,7 +87,13 @@ var app = (function() {
   }
 
   function headRequest() {
-    // TODO 5.1
+    fetch('examples/words.txt', {
+        method: 'HEAD'
+      })
+      .then(validateResponse)
+      .then(readResponseAsText)
+      .then(logResult)
+      .catch(logError);
   }
 
   function logSize(response) {
