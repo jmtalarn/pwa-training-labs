@@ -75,6 +75,7 @@ var app = (function() {
   }
 
   function readResponseAsText(response) {
+
     return response.text();
   }
 
@@ -91,13 +92,15 @@ var app = (function() {
         method: 'HEAD'
       })
       .then(validateResponse)
+      .then(logSize)
       .then(readResponseAsText)
       .then(logResult)
       .catch(logError);
   }
 
   function logSize(response) {
-    // TODO 5.2
+    console.log(response.headers.get('content-length'));
+    return response;
   }
 
   /* NOTE: Never send unencrypted user credentials in production! */
