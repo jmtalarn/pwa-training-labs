@@ -32,6 +32,7 @@ var app = (function() {
   function fetchJSON() {
     fetch('examples/animals.json')
       .then(validateResponse)
+      .then(readResponseAsJSON)
       .then(logResult)
       .catch(logError);
   }
@@ -45,7 +46,7 @@ var app = (function() {
   }
 
   function readResponseAsJSON(response) {
-    // TODO 2.4
+    return response.json();
   }
 
   function showImage(responseAsBlob) {
