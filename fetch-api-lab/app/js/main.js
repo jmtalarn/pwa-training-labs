@@ -30,13 +30,18 @@ var app = (function() {
   }
 
   function fetchJSON() {
-    fetch('examples/non-existent.json')
+    fetch('examples/animals.json')
+      .then(validateResponse)
       .then(logResult)
       .catch(logError);
   }
 
   function validateResponse(response) {
-    // TODO 2.3
+    if(response.ok){
+      return response;
+    }else{
+      throw response.statusText;
+    }
   }
 
   function readResponseAsJSON(response) {
