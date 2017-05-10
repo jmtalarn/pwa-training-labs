@@ -107,12 +107,13 @@ var app = (function() {
   function postRequest() {
     var formData = new FormData(document.getElementById('myForm'));
 
-    fetch('http://localhost:5000/',{
+    fetch('http://localhost:5001/',{
       method: 'POST',
-      body: formData
+      body: formData,
+      mode: 'no-cors'
     })
-    .then(validateResponse)
-    .then(readResponseAsText)
+    //.then(validateResponse)
+    //.then(readResponseAsText)
     .then(logResult)
     .catch(logError);
   }
