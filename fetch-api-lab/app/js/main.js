@@ -108,7 +108,9 @@ var app = (function() {
     var formData = new FormData(document.getElementById('myForm'));
     var customHeaders = new Headers();
     customHeaders.append('Content-Type', 'text/plain');
-    customHeaders.append('Content-Length', '696969');
+    customHeaders.append('X-Custom', 'Hello world');
+    customHeaders.append('Y-Custom', 'Hello world');
+    
     fetch('http://localhost:5000/',{
       method: 'POST',
       body: formData,
