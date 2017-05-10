@@ -106,14 +106,17 @@ var app = (function() {
   /* NOTE: Never send unencrypted user credentials in production! */
   function postRequest() {
     var formData = new FormData(document.getElementById('myForm'));
-
-    fetch('http://localhost:5001/',{
+    var customHeaders = new Headers();
+    customHeaders.append('Content-Type', 'text/plain');
+    customHeaders.append('Content-Length', '696969');
+    fetch('http://localhost:5000/',{
       method: 'POST',
       body: formData,
-      mode: 'no-cors'
+      headers: customHeaders
+      //,mode: 'no-cors'
     })
-    //.then(validateResponse)
-    //.then(readResponseAsText)
+    .then(validateResponse)
+    .then(readResponseAsText)
     .then(logResult)
     .catch(logError);
   }
