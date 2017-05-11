@@ -52,20 +52,17 @@ limitations under the License.
           return response;
         }
         console.log('Network request for ', event.request.url);
-        return fetch(event.request)
-
-          .then(function(response) {
-
-            // TODO 5 - Respond with custom 404 page
-
-            return caches.open(staticCacheName).then(function(cache) {
-              if (event.request.url.indexOf('test') < 0) {
-                cache.put(event.request.url, response.clone());
-              }
-              return response;
-            });
+        return fetch(event.request).then(function(response) {
+          if (response.status === 404) {
+            return caches.match('pages/404.html');
+          }
+          return caches.open(staticCacheName).then(function(cache) {
+            if (event.request.url.indexOf('test') < 0) {
+              cache.put(event.request.url, response.clone());
+            }
+            return response;
           });
-
+        });
       }).catch(function(error) {
 
         // TODO 6 - Respond with custom offline page
