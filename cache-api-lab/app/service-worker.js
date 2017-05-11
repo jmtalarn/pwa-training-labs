@@ -64,9 +64,8 @@ limitations under the License.
           });
         });
       }).catch(function(error) {
-
-        // TODO 6 - Respond with custom offline page
-
+        console.log(error);
+        return caches.match('pages/offline.html');
       })
     );
   });
