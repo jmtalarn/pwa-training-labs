@@ -15,10 +15,10 @@ limitations under the License.
 -->
 <!DOCTYPE html>
 <html>
+
 <head>
-  <!-- Web Application Manifest -->
-  <link rel="manifest" href="manifest.json"
-  
+
+
   <meta name="author" content="//samdutton.com">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
@@ -28,9 +28,26 @@ limitations under the License.
   <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/main.css" />
 
-  <!-- TODO 4.1: Add manifest.json -->
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json" <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#2E3AA1">
 
-  <!-- TODO 4.3: Add tags for other browsers -->
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="PSK">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
+  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -58,7 +75,8 @@ limitations under the License.
 
       <h2>My blog post</h2>
 
-      <p class="lead">I love cheese, especially manchego swiss. ☺ Fromage queso jarlsberg cheesy feet emmental cottage cheese camembert de normandie bocconcini. Cottage cheese everyone loves cauliflower cheese rubber cheese squirty cheese halloumi cow fondue. Bocconcini cheese and biscuits everyone loves fondue red leicester st. agur blue cheese rubber cheese ricotta. Cheesy grin mozzarella.</p>
+      <p class="lead">I love cheese, especially manchego swiss. ☺ Fromage queso jarlsberg cheesy feet emmental cottage cheese camembert de normandie bocconcini. Cottage cheese everyone loves cauliflower cheese rubber cheese squirty cheese halloumi cow fondue. Bocconcini
+        cheese and biscuits everyone loves fondue red leicester st. agur blue cheese rubber cheese ricotta. Cheesy grin mozzarella.</p>
 
     </section>
 
@@ -78,4 +96,5 @@ limitations under the License.
   <!-- TODO 5.1: Add and register a service worker  -->
 
 </body>
+
 </html>
