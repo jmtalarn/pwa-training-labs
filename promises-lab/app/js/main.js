@@ -45,6 +45,7 @@ var app = (function() {
 
   function flagChain(country) {
     return getImageName(country)
+      .catch(fallbackName)
       .then(fetchFlag)
       .then(processFlag)
       .then(appendFlag)
