@@ -74,7 +74,17 @@ var app = (function() {
     console.log(result);
   });
 
-  // TODO 4.2 - Promise.race
+  var promise1 = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 500, 'one');
+  });
+
+  var promise2 = new Promise(function(resolve, reject) {
+    setTimeout(reject, 100, 'two');
+  });
+
+  Promise.race([promise1, promise2])
+    .then(logSuccess)
+    .catch(logError);
 
   /* Helper functions */
 
