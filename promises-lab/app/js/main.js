@@ -33,18 +33,19 @@ var app = (function() {
   }
 
   function isSpain(country) {
-      //country = country.toLowerCase();
-      return new Promise(function(resolve,reject){
-        if (country==='Spain'){
-          resolve(country);
-        }else{
-          reject(Error("This is no Spain"));
-        }
-      });
+    //country = country.toLowerCase();
+    return new Promise(function(resolve, reject) {
+      if (country === 'Spain') {
+        resolve(country);
+      } else {
+        reject(Error("This is no Spain"));
+      }
+    });
   }
 
   function flagChain(country) {
-    // TODO 2.2 - use the promise
+    return getImageName(country)
+      .then(logSuccess, logError);
   }
 
   function spainTest(country) {
