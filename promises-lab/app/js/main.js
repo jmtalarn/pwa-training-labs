@@ -59,10 +59,20 @@ var app = (function() {
   }
 
   function allFlags(promiseList) {
-    // TODO
+    return Promise.all(promiseList)
+      .then(values => values)
+      .catch(error => false)
   }
 
-  // TODO 4.1 - Promise.all
+  var promises = [
+    getImageName('Spain'),
+    getImageName('Chile'),
+    getImageName('Peru')
+  ];
+
+  allFlags(promises).then(function(result) {
+    console.log(result);
+  });
 
   // TODO 4.2 - Promise.race
 
