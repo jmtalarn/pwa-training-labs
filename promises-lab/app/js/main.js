@@ -45,11 +45,14 @@ var app = (function() {
 
   function flagChain(country) {
     return getImageName(country)
-      .then(logSuccess, logError);
+      .then(logSuccess)
+      .catch(logError);
   }
 
   function spainTest(country) {
-    // TODO - Optional
+    return isSpain(country)
+      .then(returnTrue)
+      .catch(returnFalse);
   }
 
   function allFlags(promiseList) {
