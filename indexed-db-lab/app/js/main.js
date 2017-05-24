@@ -41,11 +41,10 @@ var idbApp = (function() {
         });
 
       case 3:
-          console.log('Creating a price and description indexes');
-          var store = upgradeDb.transaction.objectStore('products');
-          store.createIndex('price', 'price', {});
-          store.createIndex('description', 'description', {});
-        // TODO 4.2 - create 'price' and 'description' indexes
+        console.log('Creating a price and description indexes');
+        var store = upgradeDb.transaction.objectStore('products');
+        store.createIndex('price', 'price', {});
+        store.createIndex('description', 'description', {});
 
         // TODO 5.1 - create an 'orders' object store
 
@@ -127,7 +126,12 @@ var idbApp = (function() {
 
   function getByName(key) {
 
-    // TODO 4.3 - use the get method to get an object by name
+    return dbPromise.then(function(db) {
+      var tx = db.transaction('products', 'readonly');
+      var store = tx.objectStore('products');
+      var index = store.index('name');
+      return index.get(key);
+    });
 
   }
 
