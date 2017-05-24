@@ -16,7 +16,10 @@ limitations under the License.
 var idbApp = (function() {
   'use strict';
 
-  // TODO 2 - check for support
+  if (!('indexedDB' in window)) {
+    console.log('This browser doesn\'t support IndexedDB');
+    return;
+  }
 
   var dbPromise;
 
@@ -36,10 +39,14 @@ var idbApp = (function() {
 
   function displayByName() {
     var key = document.getElementById('name').value;
-    if (key === '') {return;}
+    if (key === '') {
+      return;
+    }
     var s = '';
     getByName(key).then(function(object) {
-      if (!object) {return;}
+      if (!object) {
+        return;
+      }
 
       s += '<h2>' + object.name + '</h2><p>';
       for (var field in object) {
@@ -48,7 +55,9 @@ var idbApp = (function() {
       s += '</p>';
 
     }).then(function() {
-      if (s === '') {s = '<p>No results.</p>';}
+      if (s === '') {
+        s = '<p>No results.</p>';
+      }
       document.getElementById('results').innerHTML = s;
     });
   }
@@ -61,7 +70,9 @@ var idbApp = (function() {
 
   function getByDesc() {
     var key = document.getElementById('desc').value;
-    if (key === '') {return;}
+    if (key === '') {
+      return;
+    }
     var range = IDBKeyRange.only(key);
     var s = '';
     dbPromise.then(function(db) {
@@ -69,7 +80,9 @@ var idbApp = (function() {
       // TODO 4.4b - get items by their description
 
     }).then(function() {
-      if (s === '') {s = '<p>No results.</p>';}
+      if (s === '') {
+        s = '<p>No results.</p>';
+      }
       document.getElementById('results').innerHTML = s;
     });
   }
@@ -87,7 +100,9 @@ var idbApp = (function() {
       // TODO 5.3 - use a cursor to display the orders on the page
 
     }).then(function() {
-      if (s === '') {s = '<p>No results.</p>';}
+      if (s === '') {
+        s = '<p>No results.</p>';
+      }
       document.getElementById('orders').innerHTML = s;
     });
   }
@@ -126,7 +141,7 @@ var idbApp = (function() {
     }).then(function() {
       console.log('Orders processed successfully!');
       document.getElementById('receipt').innerHTML =
-      '<h3>Order processed successfully!</h3>';
+        '<h3>Order processed successfully!</h3>';
     });
   }
 
