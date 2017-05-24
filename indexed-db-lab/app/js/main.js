@@ -369,7 +369,14 @@ var idbApp = (function() {
   function updateProductsStore(products) {
     dbPromise.then(function(db) {
 
-      // TODO 5.7 - update the items in the 'products' object store
+      var tx = db.transaction('products', 'readwrite');
+      var store = tx.objectStore('products');
+
+      products.forEach(function(item) {
+        console.log('Updated item: ', item);
+        store.put(item);
+      });
+      return tx.complete;
 
     }).then(function() {
       console.log('Orders processed successfully!');
