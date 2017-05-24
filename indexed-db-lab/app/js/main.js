@@ -335,7 +335,17 @@ var idbApp = (function() {
 
   function processOrders(orders) {
 
-    // TODO 5.5 - get items in the 'products' store matching the orders
+    return dbPromise.then(function(db) {
+      var tx = db.transaction('products');
+      var store = tx.objectStore('products');
+      return Promise.all(
+        orders.map(function(order) {
+          return store.get(order.id).then(function(product) {
+            return decrementQuantity(product, order);
+          });
+        })
+      );
+    });
 
   }
 
