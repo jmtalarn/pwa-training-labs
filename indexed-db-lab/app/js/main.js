@@ -21,7 +21,7 @@ var idbApp = (function() {
     return;
   }
 
-  var dbPromise = idb.open('couches-n-things', 4, function(upgradeDb) {
+  var dbPromise = idb.open('couches-n-things', 5, function(upgradeDb) {
     switch (upgradeDb.oldVersion) {
       case 0:
         // a placeholder case so that the switch block will
@@ -46,7 +46,11 @@ var idbApp = (function() {
         store.createIndex('price', 'price', {});
         store.createIndex('description', 'description', {});
 
-        // TODO 5.1 - create an 'orders' object store
+      case 4:
+        console.log('Creating the orders object store');
+        upgradeDb.createObjectStore('orders', {
+          keyPath: 'id'
+        });
 
     }
   });
