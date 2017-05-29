@@ -38,7 +38,7 @@
 'use strict';
 
 var precacheConfig = [["css/main.css","3a78f101efdbf4c896cef53c323c7bb7"],["index.html","efb0164f929cb7b5c5727459a24c043d"]];
-var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
+var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
 var ignoreUrlParametersMatching = [/^utm_/];
