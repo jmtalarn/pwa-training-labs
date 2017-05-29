@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
-// TODO 4.1 - Require gulp and plugins
+ var gulp = require('gulp');
+ var path = require('path');
+ var swPrecache = require('sw-precache');
 
 // TODO 4.2 - Insert the gulp task code
