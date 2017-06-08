@@ -1,8 +1,13 @@
 var gulp = require('gulp');
-// TODO 4.1 - include gulp-uglify
+var uglify = require('gulp-uglify');
+
 // TODO 6.3a - include browserSync
 
-// TODO 4.2 - uglify / minify JavaScript
+gulp.task('minify', function() {
+  gulp.src('js/main.js')
+  .pipe(uglify())
+  .pipe(gulp.dest('build'));
+});
 
 // TODO 6.1 - add default tasks
 
