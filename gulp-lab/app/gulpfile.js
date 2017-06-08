@@ -3,7 +3,7 @@ const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat')
 const autoprefixer = require('gulp-autoprefixer');
-// TODO 6.3a - include browserSync
+const browserSync = require('browser-sync');
 
 gulp.task('minify', function() {
   gulp.src('js/main.js')
@@ -27,4 +27,9 @@ gulp.task('default', ['minify','processCSS-sm']);
 gulp.task('watch', function(){
   gulp.watch('styles/*.css', ['processCSS']);
 });
-// TODO 6.3b - run a local server
+gulp.task('serve', function() {
+  browserSync.init({
+    server: '.',
+    port: 3000
+  });
+});
