@@ -1,4 +1,4 @@
-// TODO 3 - include gulp
+var gulp = require('gulp');
 // TODO 4.1 - include gulp-uglify
 // TODO 6.3a - include browserSync
 
