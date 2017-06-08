@@ -27,9 +27,11 @@ gulp.task('default', ['minify','processCSS-sm']);
 gulp.task('watch', function(){
   gulp.watch('styles/*.css', ['processCSS']);
 });
-gulp.task('serve', function() {
+gulp.task('serve', ['processCSS'], function() {
   browserSync.init({
     server: '.',
     port: 3000
   });
+  gulp.watch('styles/*.css', ['processCSS']).on('change', browserSync.reload);
+  gulp.watch('*.html').on('change', browserSync.reload);
 });
