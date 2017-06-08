@@ -23,8 +23,8 @@ gulp.task('processCSS-sm', function(){
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('build'));
 });
-// TODO 6.1 - add default tasks
-
-// TODO 6.2 - watch files
-
+gulp.task('default', ['minify','processCSS-sm']);
+gulp.task('watch', function(){
+  gulp.watch('styles/*.css', ['processCSS']);
+});
 // TODO 6.3b - run a local server
