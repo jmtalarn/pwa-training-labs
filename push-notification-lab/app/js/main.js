@@ -124,7 +124,23 @@ var app = (function() {
 
   function unsubscribeUser() {
 
-    // TODO 3.5 - unsubscribe from the push service
+    swRegistration.pushManager.getSubscription()
+      .then(function(subscription) {
+        if (subscription) {
+          return subscription.unsubscribe();
+        }
+      })
+      .catch(function(error) {
+        console.log('Error unsubscribing', error);
+      })
+      .then(function() {
+        updateSubscriptionOnServer(null);
+
+        console.log('User is unsubscribed');
+        isSubscribed = false;
+
+        updateBtn();
+      });
 
   }
 
