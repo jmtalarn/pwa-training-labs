@@ -95,31 +95,28 @@ var app = (function() {
 
   }
 
-  // TODO 4.2a - add VAPID public key
+  var applicationServerPublicKey = "BPno4JpSTD-39CgTfSPsCzYc9DpeMNqPQLiJpMW7WtYbBhc3qzK_bL1r1ksWujWfBvHx3YgKyXkdSffUW4nsWA4";
 
   function subscribeUser() {
-
+    var applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
     swRegistration.pushManager.subscribe({
-        userVisibleOnly: true
-      })
-      .then(function(subscription) {
-        console.log('User is subscribed:', subscription);
-
-        updateSubscriptionOnServer(subscription);
-
-        isSubscribed = true;
-
-        updateBtn();
-      })
-      .catch(function(err) {
-        if (Notification.permission === 'denied') {
-          console.warn('Permission for notifications was denied');
-        } else {
-          console.error('Failed to subscribe the user: ', err);
-        }
-        updateBtn();
-      });
-
+      userVisibleOnly: true,
+      applicationServerKey: applicationServerKey
+    })
+    .then(function(subscription) {
+      console.log('User is subscribed:', subscription);
+      updateSubscriptionOnServer(subscription);
+      isSubscribed = true;
+      updateBtn();
+    })
+    .catch(function(err) {
+      if (Notification.permission === 'denied') {
+        console.warn('Permission for notifications was denied');
+      } else {
+        console.error('Failed to subscribe the user: ', err);
+      }
+      updateBtn();
+    });
   }
 
   function unsubscribeUser() {
