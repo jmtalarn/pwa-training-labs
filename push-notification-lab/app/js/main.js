@@ -33,7 +33,14 @@ var app = (function() {
 
   function displayNotification() {
 
-    // TODO 2.3 - display a Notification
+    if (Notification.permission == 'granted') {
+      navigator.serviceWorker.getRegistration().then(function(reg) {
+
+        // TODO 2.4 - Add 'options' object to configure the notification
+
+        reg.showNotification('Hello world!');
+      });
+    }
 
   }
 
