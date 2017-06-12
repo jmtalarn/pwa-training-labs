@@ -22,7 +22,10 @@ var app = (function() {
   var notifyButton = document.querySelector('.js-notify-btn');
   var pushButton = document.querySelector('.js-push-btn');
 
-  // TODO 2.1 - check for notification support
+  if (!('Notification' in window)) {
+    console.log('This browser does not support notifications!');
+    return;
+  }
 
   // TODO 2.2 - request permission to show notifications
 
@@ -109,17 +112,17 @@ var app = (function() {
     console.log('Service Worker and Push is supported');
 
     navigator.serviceWorker.register('sw.js')
-    .then(function(swReg) {
-      console.log('Service Worker is registered', swReg);
+      .then(function(swReg) {
+        console.log('Service Worker is registered', swReg);
 
-      swRegistration = swReg;
+        swRegistration = swReg;
 
-      // TODO 3.3a - call the initializeUI() function
+        // TODO 3.3a - call the initializeUI() function
 
-    })
-    .catch(function(error) {
-      console.error('Service Worker Error', error);
-    });
+      })
+      .catch(function(error) {
+        console.error('Service Worker Error', error);
+      });
   } else {
     console.warn('Push messaging is not supported');
     pushButton.textContent = 'Push Not Supported';
