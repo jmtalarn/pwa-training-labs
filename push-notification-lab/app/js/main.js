@@ -99,7 +99,26 @@ var app = (function() {
 
   function subscribeUser() {
 
-    // TODO 3.4 - subscribe to the push service
+    swRegistration.pushManager.subscribe({
+        userVisibleOnly: true
+      })
+      .then(function(subscription) {
+        console.log('User is subscribed:', subscription);
+
+        updateSubscriptionOnServer(subscription);
+
+        isSubscribed = true;
+
+        updateBtn();
+      })
+      .catch(function(err) {
+        if (Notification.permission === 'denied') {
+          console.warn('Permission for notifications was denied');
+        } else {
+          console.error('Failed to subscribe the user: ', err);
+        }
+        updateBtn();
+      });
 
   }
 
