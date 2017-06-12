@@ -27,7 +27,9 @@ var app = (function() {
     return;
   }
 
-  // TODO 2.2 - request permission to show notifications
+  Notification.requestPermission(function(status) {
+    console.log('Notification permission status:', status);
+  });
 
   function displayNotification() {
 
