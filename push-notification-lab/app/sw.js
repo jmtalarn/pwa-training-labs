@@ -23,7 +23,12 @@ limitations under the License.
     console.log('Closed notification: ' + primaryKey);
   });
 
-  // TODO 2.7 - Handle the notificationclick event
+  self.addEventListener('notificationclick', function(e) {
+
+    // TODO 2.8 - change the code to open a custom page
+
+    clients.openWindow('http://google.com');
+  });
 
   // TODO 3.1 - add push event listener
 
