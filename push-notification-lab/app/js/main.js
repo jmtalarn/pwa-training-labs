@@ -69,8 +69,29 @@ var app = (function() {
 
   function initializeUI() {
 
-    // TODO 3.3b - add a click event listener to the "Enable Push" button
-    // and get the subscription object
+    pushButton.addEventListener('click', function() {
+      pushButton.disabled = true;
+      if (isSubscribed) {
+        unsubscribeUser();
+      } else {
+        subscribeUser();
+      }
+    });
+
+    swRegistration.pushManager.getSubscription()
+      .then(function(subscription) {
+        isSubscribed = (subscription !== null);
+
+        updateSubscriptionOnServer(subscription);
+
+        if (isSubscribed) {
+          console.log('User IS subscribed.');
+        } else {
+          console.log('User is NOT subscribed.');
+        }
+
+        updateBtn();
+      });
 
   }
 
@@ -149,7 +170,7 @@ var app = (function() {
 
         swRegistration = swReg;
 
-        // TODO 3.3a - call the initializeUI() function
+        initializeUI();
 
       })
       .catch(function(error) {
