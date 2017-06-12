@@ -36,9 +36,22 @@ var app = (function() {
     if (Notification.permission == 'granted') {
       navigator.serviceWorker.getRegistration().then(function(reg) {
 
-        // TODO 2.4 - Add 'options' object to configure the notification
+        var options = {
+          body: 'First notification!',
+          icon: 'images/notification-flat.png',
+          vibrate: [100, 50, 100],
+          data: {
+            dateOfArrival: Date.now(),
+            primaryKey: 1
+          },
 
-        reg.showNotification('Hello world!');
+          // TODO 2.5 - add actions to the notification
+
+          // TODO 5.1 - add a tag to the notification
+
+        };
+
+        reg.showNotification('Hello world!', options);
       });
     }
 
