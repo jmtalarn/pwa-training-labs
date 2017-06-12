@@ -45,7 +45,17 @@ var app = (function() {
             primaryKey: 1
           },
 
-          // TODO 2.5 - add actions to the notification
+          actions: [{
+              action: 'explore',
+              title: 'Go to the site',
+              icon: 'images/checkmark.png'
+            },
+            {
+              action: 'close',
+              title: 'Close the notification',
+              icon: 'images/xmark.png'
+            },
+          ]
 
           // TODO 5.1 - add a tag to the notification
 
