@@ -16,7 +16,12 @@ limitations under the License.
 (function() {
   'use strict';
 
-  // TODO 2.6 - Handle the notificationclose event
+  self.addEventListener('notificationclose', function(e) {
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+
+    console.log('Closed notification: ' + primaryKey);
+  });
 
   // TODO 2.7 - Handle the notificationclick event
 
