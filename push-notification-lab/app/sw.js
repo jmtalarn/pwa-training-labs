@@ -25,9 +25,10 @@ limitations under the License.
 
   self.addEventListener('notificationclick', function(e) {
 
-    // TODO 2.8 - change the code to open a custom page
-
-    clients.openWindow('http://google.com');
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+    clients.openWindow('samples/page'+ primaryKey+'.html');
+    //clients.openWindow('http://google.com');
   });
 
   // TODO 3.1 - add push event listener
