@@ -40,13 +40,21 @@ limitations under the License.
   });
 
   self.addEventListener('push', function(e) {
+    var body;
+
+    if (e.data) {
+      body = e.data.text();
+    } else {
+      body = 'Default body';
+    }
+
     var options = {
-      body: 'This notification was generated from a push!',
+      body: body,
       icon: 'images/notification-flat.png',
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),
-        primaryKey: '-push-notification'
+        primaryKey: 1
       },
       actions: [{
           action: 'explore',
@@ -60,8 +68,9 @@ limitations under the License.
         },
       ]
     };
+
     e.waitUntil(
-      self.registration.showNotification('Hello world!', options)
+      self.registration.showNotification('Push Notification', options)
     );
   });
 
