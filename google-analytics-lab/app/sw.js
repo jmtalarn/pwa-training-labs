@@ -16,7 +16,8 @@ limitations under the License.
 
 self.importScripts('js/analytics-helper.js');
 
-// TODO 9 - Add offline analytics script
+importScripts('node_modules/sw-offline-google-analytics/build/importScripts/sw-offline-google-analytics.dev.v0.0.25.js');
+goog.offlineGoogleAnalytics.initialize();
 
 (function() {
   'use strict';
