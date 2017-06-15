@@ -75,15 +75,15 @@ limitations under the License.
                 })
                 .then(function(subscription) {
                   console.log('Subscribed to push,', subscription);
-                  // TODO 7.2a - Subscribe event
+                  ga('send', 'event', 'push', 'subscribe', 'success');
                 })
                 .catch(function(error) {
                   if (Notification.permission === 'denied') {
                     console.warn('Subscribe failed, notifications are blocked');
-                    // Optional TODO - Send hits for subscribe error
+                    ga('send', 'event', 'push', 'subscribe', 'denied');
                   } else {
                     console.error('Unable to subscribe to push', error);
-                    // Optional TODO - Send hits for subscribe error
+                    ga('send', 'event', 'push', 'subscribe', 'error');
                   }
                 });
             } else {
@@ -109,7 +109,7 @@ limitations under the License.
               sub.unsubscribe()
                 .then(function() {
                   console.log('Unsubscribed!');
-                  // TODO 7.2b - Unsubscribe event
+                  ga('send', 'event', 'push', 'unsubscribe', 'success');
                 });
             } else {
               console.log('Not currently subscribed');
