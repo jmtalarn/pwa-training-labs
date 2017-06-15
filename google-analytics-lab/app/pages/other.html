@@ -16,26 +16,41 @@ limitations under the License.
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
 
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <meta charset="utf-8">
-    <title>Other page</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <title>Other page</title>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <h1>Other</h1>
+  <h1>Other</h1>
 
-    <p>This is another page</p>
+  <p>This is another page</p>
 
-    <br><br>
+  <br><br>
 
-    <a href="../index.html">Back</a>
+  <a href="../index.html">Back</a>
 
-    <!-- TODO 3: Add tracking snippet -->
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  </body>
+    ga('create', 'UA-4618577-9', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</body>
 
 </html>
